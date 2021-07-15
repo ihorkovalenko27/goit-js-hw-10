@@ -15,4 +15,30 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  margin: 30px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+#search-box:hover {
+  border-color: #5b92e5;
+  border-radius: 5%;
+}
+#search-box:focus {
+  border: 2px solid #5b92e5;
+  border-radius: 5%;
+  outline:none;
+}
+
+
+
+
+.country-list {
+  padding: 0; 
+}
+
+.js-country{
+  display: flex;
+  align-items: center;
 }
