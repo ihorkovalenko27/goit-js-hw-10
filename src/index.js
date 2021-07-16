@@ -2,8 +2,8 @@ import './css/styles.css';
 import API from './js/fetchCountries.js';
 import debounce from 'lodash.debounce';
 import Notiflix from "notiflix";
-import cardTmp from './templates/country-card.hbs'
-import listTmp from './templates/country-list.hbs'
+import cardTemplate from './templates/country-card.hbs'
+import listTemplate from './templates/country-list.hbs'
 const DEBOUNCE_DELAY = 300;
 
 const countryList = document.querySelector('.country-list');
@@ -39,12 +39,12 @@ function renderCountry(country){
  }
 
 function updateCountryList(data){
-    const markUp = listTmp(data);
+    const markUp = listTemplate(data);
     countryList.innerHTML = markUp;
 }
 
 function updateCountryCard(data){
-    const markUp = cardTmp(data);
+    const markUp = cardTemplate(data);
     countryCard.innerHTML = markUp;
     clearDataList()
 }

@@ -15,7 +15,7 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
-  margin: 30px;
+  margin: 30px 30px 5px 35px;
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
@@ -34,11 +34,39 @@ body {
 
 
 
-.country-list {
-  padding: 0; 
+.js-country-list {
+  padding: 0px; 
 }
 
-.js-country{
+.js-country {
   display: flex;
   align-items: center;
+}
+
+.list-title {
+  font-weight: 500;
+  margin: 5px 10px 10px;
+}
+.card-img-top {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 40px;
+}
+.card-title{
+  margin-left: 10px;
+}
+.card-text, .list-group-item {
+  padding-left: 40px;
+  list-style: none;
+}
+
+.card-text {
+  margin-top: 0;
+  margin-bottom: 15px;;;
+}
+
+.info-text {
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 5px;
 }
