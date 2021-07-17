@@ -9,6 +9,8 @@ const DEBOUNCE_DELAY = 300;
 const countryList = document.querySelector('.country-list');
 const countryCard = document.querySelector('.country-info');
 const inputSearch = document.getElementById('search-box');
+const failureMessage = 'Oops, there is no country with that name';
+const informMessage = 'Too many matches found. Please enter a more specific name.';
 
 inputSearch.addEventListener('input', debounce(onFilterChange, DEBOUNCE_DELAY));
 
@@ -17,7 +19,7 @@ function onFilterChange(e){
  const textInput = e.target.value.trim();
 
   if(textInput === '') {
-    clearDataList();
+    updateDataList('');
     return;
   }
 
@@ -27,42 +29,41 @@ function onFilterChange(e){
 
 function renderCountry(country){
     updateCountryList(country)
-    clearDataCard();
+    updateDataCard('');
     if(country.length === 1){
         updateCountryCard(country);
     } else if(country.length > 10){
-        infoMessage();
+      showMessage(informMessage);
     } else if(country.status === 404){
-        errorMessage();
+      showMessage(failureMessage);
     } 
 
  }
 
 function updateCountryList(data){
     const markUp = listTemplate(data);
-    countryList.innerHTML = markUp;
+    updateDataList(markUp);
 }
 
 function updateCountryCard(data){
     const markUp = cardTemplate(data);
-    countryCard.innerHTML = markUp;
-    clearDataList()
+    updateDataCard(markUp);
+    updateDataList('');
 }
 
-
-function errorMessage(){
-  Notiflix.Notify.failure('Oops, there is no country with that name');
-  clearDataList()
+function showMessage(message){
+  if(message === failureMessage){
+    Notiflix.Notify.failure(message);
+    updateDataList('');
+  } else if (message === informMessage){
+    Notiflix.Notify.info(message);
+  }
 }
 
-function infoMessage(){
-  Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+function updateDataList(markup){
+  countryList.innerHTML = markup;
 }
 
-function clearDataList(){
-  countryList.innerHTML = '';
-}
-
-function clearDataCard(){
-  countryCard.innerHTML = '';
+function updateDataCard(markup){
+  countryCard.innerHTML = markup;
 }
